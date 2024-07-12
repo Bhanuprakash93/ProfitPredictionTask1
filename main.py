@@ -198,8 +198,8 @@ st.title('Profit Prediction Analysis')
 month = st.selectbox('Select Month-Year', Corp_W_SF['month_of_year'].unique())
 
 # New input fields for dynamic column selection, limited to feature_columns_NLM
-x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM)
-x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM)
+x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM[ 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration'])
+x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM[ 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration'])
 
 st.header('Input Values for Grid')
 pmin = st.number_input(f'Enter minimum {x_col1} value', key='pmin', min_value=None, max_value=None, step=0.005)
