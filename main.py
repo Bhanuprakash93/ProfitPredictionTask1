@@ -129,7 +129,7 @@ scalary = joblib.load('scalary.pkl')
 scalarx = joblib.load('scalarx.pkl')
 
 # Load the data
-Corp_W_SF = pd.read_csv("Corp_W_SF_data.csv")
+Corp_W_SF = pd.read_csv("C:/Users/Bhanu prakash/OneDrive - Vijaybhoomi International School/Desktop/11_07_24_Streamlit/Corp_W_SF_data.csv")
 
 # Define the columns used in the model
 feature_columns_NLM = ['GMRate', 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration', 'EconomicIndicator', 'SF']
@@ -202,11 +202,11 @@ x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM)
 x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM)
 
 st.header('Input Values for Grid')
-pmin = st.number_input(f'Enter minimum {x_col1} value', min_value=0.0, max_value=2.0, step=0.005)
-pmax = st.number_input(f'Enter maximum {x_col1} value', min_value=0.0, max_value=2.0, step=0.005)
-dmMin = st.number_input(f'Enter minimum {x_col2} value', min_value=0.0, max_value=2.0, step=0.005)
-dmMax = st.number_input(f'Enter maximum {x_col2} value', min_value=0.0, max_value=2.0, step=0.005)
-step_size = st.number_input('Enter step size', min_value=0.0, max_value=0.01, step=0.005)
+pmin = st.number_input(f'Enter minimum {x_col1} value', min_value=None, max_value=None, step=0.005)
+pmax = st.number_input(f'Enter maximum {x_col1} value', min_value=None, max_value=None, step=0.005)
+dmMin = st.number_input(f'Enter minimum {x_col2} value', min_value=None, max_value=None, step=0.005)
+dmMax = st.number_input(f'Enter maximum {x_col2} value', min_value=None, max_value=None, step=0.005)
+step_size = st.number_input('Enter step size', min_value=None, max_value=None, step=0.005)
 
 # Selection for X-axis column in 2D plot
 x_axis_column = st.selectbox('Select the column to use for the X-axis in the 2D plot', [x_col1, x_col2])
