@@ -209,7 +209,7 @@ pmin = st.number_input(f'Enter minimum {x_col1} value', key='pmin', min_value=No
 pmax = st.number_input(f'Enter maximum {x_col1} value', key='pmax', min_value=None, max_value=None, step=0.005)
 dmMin = st.number_input(f'Enter minimum {x_col2} value', key='dmMin', min_value=None, max_value=None, step=0.005)
 dmMax = st.number_input(f'Enter maximum {x_col2} value', key='dmMax', min_value=None, max_value=None, step=0.005)
-step_size = st.number_input('Enter step size', format="%.5f", value=0.005, step=0.005)
+step_size = st.number_input('Enter step size', format="%.3f", value=0.005, step=0.005)
 
 
 # Selection for X-axis column in 2D plot
