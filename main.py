@@ -205,10 +205,11 @@ x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM1)
 x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM1)
 
 st.header('Input Values for Grid')
-pmin = st.number_input(f'Enter minimum {x_col1} value', min_value=None, max_value=None, step=0.005)
-pmax = st.number_input(f'Enter maximum {x_col1} value', min_value=None, max_value=None, step=0.005)
-dmMin = st.number_input(f'Enter minimum {x_col2} value', min_value=None, max_value=None, step=0.005)
-dmMax = st.number_input(f'Enter maximum {x_col2} value', min_value=None, max_value=None, step=0.005)
+pmin = st.number_input(f'Enter minimum {x_col1} value', min_value=None, max_value=None, step=float(0.005))
+pmax = st.number_input(f'Enter maximum {x_col1} value', min_value=None, max_value=None, step=float(0.005))
+dmMin = st.number_input(f'Enter minimum {x_col2} value', min_value=None, max_value=None, step=float(0.005))
+dmMax = st.number_input(f'Enter maximum {x_col2} value', min_value=None, max_value=None, step=float(0.005))
+
 
 # Selection for X-axis column in 2D plot
 x_axis_column = st.selectbox('Select the column to use for the X-axis in the 2D plot', [x_col1, x_col2])
