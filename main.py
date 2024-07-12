@@ -135,7 +135,7 @@ Corp_W_SF = pd.read_csv("Corp_W_SF_data.csv")
 feature_columns_NLM = ['GMRate', 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration', 'EconomicIndicator', 'SF']
 
 # Define functions
-def fn_GRID_Data_6vars(pmin, pmax, dmMin, dmMax, step_size=0.005, selected_values, bestNLM, x_col1, x_col2):
+def fn_GRID_Data_6vars(pmin, pmax, dmMin, dmMax, selected_values, bestNLM, x_col1, x_col2, step_size=0.005):
     x_values = np.arange(pmin, pmax, step_size)
     y_values = np.arange(dmMin, dmMax, step_size)
     A = pd.DataFrame({x_col1: x_values})
