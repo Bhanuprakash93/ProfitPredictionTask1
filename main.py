@@ -129,7 +129,7 @@ scalary = joblib.load('scalary.pkl')
 scalarx = joblib.load('scalarx.pkl')
 
 # Load the data
-Corp_W_SF = pd.read_csv("C:/Users/Bhanu prakash/OneDrive - Vijaybhoomi International School/Desktop/11_07_24_Streamlit/Corp_W_SF_data.csv")
+Corp_W_SF = pd.read_csv("Corp_W_SF_data.csv")
 
 # Define the columns used in the model
 feature_columns_NLM = ['GMRate', 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration', 'EconomicIndicator', 'SF']
