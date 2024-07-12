@@ -135,7 +135,7 @@ Corp_W_SF = pd.read_csv("Corp_W_SF_data.csv")
 feature_columns_NLM = ['GMRate', 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration', 'EconomicIndicator', 'SF']
 
 # Define functions
-def fn_GRID_Data_6vars(pmin, pmax, dmMin, dmMax, step_size, selected_values, bestNLM, x_col1, x_col2):
+def fn_GRID_Data_6vars(pmin, pmax, dmMin, dmMax, step_size=0.005, selected_values, bestNLM, x_col1, x_col2):
     x_values = np.arange(pmin, pmax, step_size)
     y_values = np.arange(dmMin, dmMax, step_size)
     A = pd.DataFrame({x_col1: x_values})
@@ -205,12 +205,10 @@ x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM1)
 x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM1)
 
 st.header('Input Values for Grid')
-pmin = st.number_input(f'Enter minimum {x_col1} value', key='pmin', min_value=None, max_value=None, step=0.005)
-pmax = st.number_input(f'Enter maximum {x_col1} value', key='pmax', min_value=None, max_value=None, step=0.005)
-dmMin = st.number_input(f'Enter minimum {x_col2} value', key='dmMin', min_value=None, max_value=None, step=0.005)
-dmMax = st.number_input(f'Enter maximum {x_col2} value', key='dmMax', min_value=None, max_value=None, step=0.005)
-step_size = st.number_input('Enter step size', format="%.3f", value=0.005, step=0.005)
-
+pmin = st.number_input(f'Enter minimum {x_col1} value', min_value=None, max_value=None, step=0.005)
+pmax = st.number_input(f'Enter maximum {x_col1} value', min_value=None, max_value=None, step=0.005)
+dmMin = st.number_input(f'Enter minimum {x_col2} value', min_value=None, max_value=None, step=0.005)
+dmMax = st.number_input(f'Enter maximum {x_col2} value', min_value=None, max_value=None, step=0.005)
 
 # Selection for X-axis column in 2D plot
 x_axis_column = st.selectbox('Select the column to use for the X-axis in the 2D plot', [x_col1, x_col2])
@@ -221,7 +219,7 @@ if st.button('Analyze'):
     # Dictionary of constant values for other features
     selected_values = {col: np.round(Exp_Month[col].iloc[0], 2) for col in feature_columns_NLM if col not in [x_col1, x_col2]}
     
-    Grid_df = fn_GRID_Data_6vars(pmin, pmax, dmMin, dmMax, step_size, selected_values, best_SVR, x_col1, x_col2)
+    Grid_df = fn_GRID_Data_6vars(pmin, pmax, dmMin, dmMax, selected_values=selected_values, bestNLM=best_SVR, x_col1=x_col1, x_col2=x_col2)
     
     st.subheader('2D Plot')
     fixed_value_column = x_col2 if x_axis_column == x_col1 else x_col1
@@ -229,7 +227,6 @@ if st.button('Analyze'):
     # 2D Plot
     fixed_value = round(Exp_Month[fixed_value_column].iloc[0], 2)
     optim_plot2D2(Grid_df, fixed_value, best_SVR, x_axis_column, fixed_value_column)
-    
     
     st.subheader('3D Plot')
     fn_3Dplot2(Grid_df, Exp_Month, x_col1, x_col2)
