@@ -197,9 +197,12 @@ def optim_plot2D2(df, fixed_value, ML_MODEL, x_col1, x_col2):
 st.title('Profit Prediction Analysis')
 month = st.selectbox('Select Month-Year', Corp_W_SF['month_of_year'].unique())
 
-# New input fields for dynamic column selection, limited to feature_columns_NLM
-x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM[ 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration'])
-x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM[ 'DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration'])
+# Define the list of columns
+feature_columns_NLM1 = ['DMCoupon', 'DMPromo', 'DMOther', 'CouponPenetration', 'PromoPenetration', 'OtherPenetration']
+
+# Create select boxes for dynamic column selection
+x_col1 = st.selectbox('Select first column for grid', feature_columns_NLM1)
+x_col2 = st.selectbox('Select second column for grid', feature_columns_NLM1)
 
 st.header('Input Values for Grid')
 pmin = st.number_input(f'Enter minimum {x_col1} value', key='pmin', min_value=None, max_value=None, step=0.005)
